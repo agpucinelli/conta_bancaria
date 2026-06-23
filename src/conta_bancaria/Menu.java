@@ -2,6 +2,9 @@ package conta_bancaria;
 
 import java.util.Scanner;
 
+import conta_bancaria.model.Conta;
+import conta_bancaria.model.ContaCorrente;
+import conta_bancaria.model.ContaPoupanca;
 import conta_bancaria.util.Cores;
 
 public class Menu {
@@ -13,6 +16,66 @@ public class Menu {
 		Scanner leia = new Scanner(System.in);		
 		
 		int opcao;
+		
+		/*INSTANCIAR OBJETOS DA CLASSE CONTA */
+		
+		/*Conta c1 = new Conta(1, 123, 1, "Andre", 20000.00f);		
+		c1.visualizar();
+		
+		Conta c2 = new Conta(1, 321, 1, "Tamiris", 200000.00f);
+		c2.visualizar();
+		
+		
+		/* Alteração do Saldo*/
+		/*c1.setSaldo(300000.00f);
+		c1.setTitular("Bob");
+		c1.visualizar();
+		
+		
+		/* INSTACIAR OBJETOS DA CLASSE ContaCorrente.
+		 * 
+		 * 
+		 */
+		
+		ContaCorrente cc1 = new ContaCorrente(3, 789,1, "Andre",10.00f, 10.00f);
+		ContaPoupanca cp1 = new ContaPoupanca(3, 789,2, "Andre",10.00f, "10/10/2025", 15000f, 3.0f );
+		cc1.visualizar();
+		cp1.visualizar();
+		cp1.setSaldoP(16000);
+		
+		System.out.println("\nSacar R$ 10,00 da conta Poupança : " + (cp1.sacar(20.00f) ? 
+				cp1.getSaldoP() + "Saque efetuado com sucesso!" :  cp1.getSaldoP() + "Saldo Insuficiente"));
+		
+		System.out.println("\nSacar R$ 300.000,00 da conta Poupança C2: " + (cp1.sacar(300000.00f) ? 
+				"Saque efetuado com sucesso!" : cp1.getSaldoP() + " - Saldo Insuficiente"));
+		
+		cp1.visualizar();
+		
+		/**
+		 * Saque na conta c2
+		 * if ternário
+		 * 
+		 * condição ? ação se for verdadeiro : ação se for falso
+		 * */
+		
+		/*System.out.println("\nSacar R$ 10,00 da conta : " + (cc1.sacar(20.00f) ? 
+				cc1.getSaldo() + "Saque efetuado com sucesso!" :  cc1.getSaldo() + "Saldo Insuficiente"));
+		
+		System.out.println("\nSacar R$ 300.000,00 da conta C2: " + (cc1.sacar(300000.00f) ? 
+				"Saque efetuado com sucesso!" : cc1.getSaldo() + " - Saldo Insuficiente"));
+		
+		cc1.visualizar();
+		cc1.depositar(1000);
+		cc1.visualizar();
+		
+		
+		/* Depósito na Conta c2*/
+		
+		/*c2.depositar(50000.00f);
+		c2.visualizar(); 
+		
+		*/
+		
 		
 		do {
 		System.out.println(Cores.TEXT_YELLOW + Cores.ANSI_BLUE_BACKGROUND);	
@@ -74,6 +137,11 @@ public class Menu {
 			
 			
 		}
+		
+		
+		
+		
+		
 		
 		
 		} while (!(opcao == 0));
