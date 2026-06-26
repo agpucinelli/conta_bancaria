@@ -11,6 +11,8 @@ public interface contaRepository  {
 	public void procurarPorNumero(int numero);
 	public void atualizar(Conta conta);
 	public void deletar(int numero);
+	public void listarPorTitular(String titular);
+	
 	
 	//Metodos Bancarios
 

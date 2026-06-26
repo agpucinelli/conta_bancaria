@@ -42,6 +42,7 @@ public class Menu {
 		System.out.println("                  6 - SACAR                            ");
 		System.out.println("                  7 - DEPOSITAR                        ");
 		System.out.println("                  8 - TRANSFERIR VALORES               ");
+		System.out.println("                  9 - CONSULTA POR TITULAR             ");
 		System.out.println("                  0 - SAIR                             ");
 		System.out.println("                                                       ");
 		System.out.println("*******************************************************");
@@ -81,6 +82,7 @@ public class Menu {
 			System.out.println("Buscar conta por número \n\n");
 			procurarContaPorNumero();
 			keyPress();
+			break;
 			
 		case 4:
 			System.out.println("Atualizar dados da conta \n\n");
@@ -92,16 +94,26 @@ public class Menu {
 			System.out.println("Apagar conta \n\n");
 			deletarConta();
 			keyPress();
+			break;
+			
 		case 6:
 			System.out.println("Sacar \n\n");
+			sacar();
 			keyPress();
 			break;
 		case 7:
 			System.out.println("Depositar \n\n");
+			depositar();
 			keyPress();
 			break;
 		case 8:
 			System.out.println("Transferir Valores \n\n");
+			transferir();
+			keyPress();
+			break;
+		case 9:
+			System.out.println("Transferir Valores \n\n");
+			listarPorTitular();
 			keyPress();
 			break;
 		case 0:
@@ -139,7 +151,7 @@ public class Menu {
 	
 	public static void  criarContasTeste() {
 		contaController.cadastrar(
-				new ContaCorrente(contaController.gerarNumero(), 456, 1, "Thuany Silva", 1000000.00f, 100000.00f));
+				new ContaCorrente(contaController.gerarNumero(), 456, 1, "Tamiris Silva", 1000000.00f, 100000.00f));
 		contaController.cadastrar(
 				new ContaPoupanca(contaController.gerarNumero(), 456, 2, "Marcia Condarco", 1000000.00f, 10));
 	}
@@ -148,7 +160,8 @@ public class Menu {
 		System.out.println("Digite o numero da agencia: ");
 		int agencia = leia.nextInt();
 		System.out.println("Digite o nome do titular da conta: ");
-		String titular = leia.next();
+		leia.skip("\\R");
+		String titular = leia.nextLine();
 		System.out.println("Digite o tipo da conta (1 -CONTA CORRENTE 2 - CONTA POUPANÇA) ");
 		int tipo = leia.nextInt();
 		System.out.println("Digite o saldo da conta: ");
@@ -281,6 +294,61 @@ public class Menu {
 			} else {
 				System.out.printf("\nA conta número %d não foi encontrada!", numero);
 			}
+			
+			
+			
+			
+			
 		
 	}
+		
+		public static void sacar() {
+			
+			System.out.println("digite o numero da conta: ");
+			int numero = leia.nextInt();
+			
+			System.out.println("digite o valor do saque: ");
+			float valor = leia.nextFloat();
+			
+			contaController.sacar(numero, valor);
+			
+		}
+		
+		public static void depositar() {
+			
+			System.out.println("digite o numero da conta: ");
+			int numero = leia.nextInt();
+			
+			System.out.println("digite o valor do deposito: ");
+			float valor = leia.nextFloat();
+			
+			contaController.depositar(numero, valor);
+			
+		}
+		
+		public static void transferir() {
+			
+			System.out.println("digite o numero da conta de origem: ");
+			int numeroOrigem = leia.nextInt();
+			System.out.println("digite o numero da conta de destino: ");
+			int numeroDestino = leia.nextInt();
+			
+			System.out.printf("digite o valor do transferencia: ");
+			float valor = leia.nextFloat();	
+			
+			contaController.transferir(numeroOrigem, numeroDestino, valor);
+		}
+		
+		public static void listarPorTitular() {
+			
+			System.out.println("Digite o nome do titular da conta: ");
+			
+			//leia.skip("\\R");
+			String titular = leia.nextLine();
+			
+			contaController.listarPorTitular(titular);
+					
+		}
+		
+		
 }
